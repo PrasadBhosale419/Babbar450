@@ -1,0 +1,64 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+
+
+class Solution {
+  public:
+  
+    
+    void segregateElements(vector<int>& arr) {
+        // Your code goes here
+        vector<int> pos;  // Store positive numbers
+        vector<int> neg;  // Store negative numbers
+        
+        // Separate the positive and negative numbers
+        for (int num : arr) {
+            if (num >= 0) {
+                pos.push_back(num);
+            } else {
+                neg.push_back(num);
+            }
+        }
+        
+        // Place the positive numbers back to the original array
+        int i = 0;
+        for (int num : pos) {
+            arr[i++] = num;
+        }
+        
+        // Place the negative numbers back to the original array
+        for (int num : neg) {
+            arr[i++] = num;
+        }
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
+
+    while (t--) {
+        string line;
+        getline(cin, line);
+        stringstream ss(line);
+        vector<int> nums;
+        int num;
+        while (ss >> num) {
+            nums.push_back(num);
+        }
+        Solution ob;
+        ob.segregateElements(nums);
+
+        for (int x : nums)
+            cout << x << " ";
+        cout << "\n~\n";
+    }
+}
+// } Driver Code Ends
