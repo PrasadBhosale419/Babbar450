@@ -1,54 +1,32 @@
-//{ Driver Code Starts
-// Initial function template for C++
-
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <climits>  // For INT_MAX
 using namespace std;
 
+int kthSmallest(vector<int> &arr, int k) {
+    int min_val = INT_MIN;  // Start below any possible value
+    int current_min;
 
-// } Driver Code Ends
-// User function template for C++
-
-class Solution {
-  public:
-  
-    // arr : given array
-    // k : find kth smallest element and return using this function
-    int kthSmallest(vector<int> &arr, int k) {
-        // code here
-        sort(arr.begin(),arr.end());
-        return arr[k-1];
-    }
-};
-
-//{ Driver Code Starts.
-
-int main() {
-    int test_case;
-    cin >> test_case;
-    cin.ignore();
-    while (test_case--) {
-
-        int k;
-        vector<int> arr, brr, crr;
-        string input;
-        getline(cin, input);
-        stringstream ss(input);
-        int number;
-        while (ss >> number) {
-            arr.push_back(number);
+    for (int count = 0; count < k; count++) {
+        current_min = INT_MAX;
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr[i] > min_val && arr[i] < current_min) {
+                current_min = arr[i];
+            }
         }
-        getline(cin, input);
-        ss.clear();
-        ss.str(input);
-        while (ss >> number) {
-            crr.push_back(number);
-        }
-        k = crr[0];
-        int n = arr.size();
-        Solution ob;
-        cout << ob.kthSmallest(arr, k) << endl << "~\n";
+        min_val = current_min;
     }
-    return 0;
+
+    return min_val;
 }
 
-// } Driver Code Ends
+int main() {
+    vector<int> arr = {7, 10, 4, 3, 20, 15};
+    int k = 3;
+    cout << "The " << k << "rd smallest element is " << kthSmallest(arr, k) << endl;
+
+    vector<int> arr2 = {2, 3, 1, 20, 15};
+    cout << "The " << k << "rd smallest element is " << kthSmallest(arr2, k) << endl;
+
+    return 0;
+}
