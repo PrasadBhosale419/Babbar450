@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int maxSubarraySum(vector<int> &arr) {
+        // Your code here
+        int currsum = arr[0];
+        int maxsum = arr[0];
+        
+        for(int i=1; i<arr.size();i++)
+        {
+            currsum = max(arr[i],currsum+arr[i]);
+            maxsum = max(maxsum,currsum);
+        }
+        return maxsum;
+    }
+    
+int main()
+{
+    vector<int> a = {4, 7, 26, 3, 2};
+    int sum = maxSubarraySum(a);
+    cout<<"The maximum sum is"<<sum;
+    return 0;
+}
