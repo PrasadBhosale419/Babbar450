@@ -1,45 +1,37 @@
-
-//{ Driver Code Starts
-// Initial Template for C++
-
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+void swap(int *arr, int b , int e)
+{
+    int temp = 0;
+    temp= arr[b];
+    arr[b]=arr[e];
+    arr[e]=temp;
+}
 
-
-// } Driver Code Ends
-// User function Template for C++
-class Solution {
-  public:
-    string reverseString(string& s) {
-        // code here
-        int a=0;
-        int p=s.length()-1;
-        while(a<=p){
-            swap(s[a],s[p]);
-            a++;
-            p--;
-        }
-        return s;
+void reverse(int *arr, int b, int e)
+{
+    if(b>=e)
+    {
+        return;    
     }
-};
+    else
+    {
+        swap(arr,b,e);
+        b=b+1;
+        e=e-1;
+        reverse(arr,b,e);
+    }
+}
 
-
-//{ Driver Code Starts.
-
-int main() {
-
-    int t;
-    cin >> t;
-    while (t--) {
-        string s;
-        cin >> s;
-        Solution ob;
-        cout << ob.reverseString(s) << endl;
-
-        cout << "~"
-             << "\n";
+int main()
+{
+     int arr[5] = {4, 3, 26, 7, 5};
+    int b=0;
+    int e=4;
+    reverse(arr,b,e);
+    for(int i=0;i<5;i++)
+    {
+        cout<<arr[i]<<" ";
     }
     return 0;
 }
-
-// } Driver Code Ends
