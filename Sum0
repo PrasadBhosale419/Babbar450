@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> getPairs(vector<int>& arr) {
+        unordered_set<int> seen;
+        set<pair<int, int>> resultSet; // To auto-remove duplicates and keep order
+
+        for (int num : arr) {
+            if (seen.count(-num)) {
+                int a = min(num, -num);
+                int b = max(num, -num);
+                resultSet.insert({a, b});
+            }
+            seen.insert(num);
+        }
+
+        // Convert set to vector<vector<int>>
+        vector<vector<int>> result;
+        for (auto& p : resultSet) {
+            result.push_back({p.first, p.second});
+        }
+
+        return result;
+    }
+};
