@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    // Function to count inversions in the array.
+    int inversionCount(vector<int> &arr) {
+        // Your Code Here
+        int count =0;
+        int n = arr.size();
+        for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++){
+                if(arr[i]>arr[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
