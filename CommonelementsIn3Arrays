@@ -1,0 +1,33 @@
+class Solution {
+  public:
+    // Function to find common elements in three arrays.
+    vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
+                               vector<int> &arr3) {
+        // Code Here
+        vector<int>result;
+        int i=0;
+        int j=0;
+        int k=0;
+        while(i<arr1.size()&&j<arr2.size()&&k<arr3.size()){
+            if(arr1[i]==arr2[j]&&arr2[j]==arr3[k]){
+                if(result.size()==0 || result.back()!=arr1[i]){
+                    result.push_back(arr1[i]);
+                }
+                int val = arr1[i];
+                while(i<arr1.size() && val == arr1[i])i++;
+                while(j<arr2.size() && val == arr2[j])j++;
+                while(k<arr3.size() && val == arr3[k])k++;
+            }
+            else{
+                int mn=min(arr1[i],min(arr2[j],arr3[k]));
+                if(arr1[i]==mn)i++;
+                else if(arr2[j]==mn)j++;
+                else k++;
+            }
+        }
+        if(result.size()==0){
+            result.push_back(-1);
+        }
+        return result;
+    }
+};
