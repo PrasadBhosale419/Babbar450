@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int findMinDiff(vector<int>& a, int m) {
+        // code here
+        int mindiff = INT_MAX;
+        int n = a.size();
+        sort(a.begin(),a.end());
+        if(m==n){
+            mindiff = a[n-1]-a[0];
+        }
+        else{
+            for(int i=0;i+(m-1)<a.size();i++){
+                mindiff = min(mindiff,a[i+(m-1)]-a[i]);
+            }
+        }
+        
+        return mindiff;
+    }
+};
