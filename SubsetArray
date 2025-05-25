@@ -1,0 +1,25 @@
+class Solution {
+  public:
+    // Function to check if b is a subset of a
+    bool isSubset(vector<int> &a, vector<int> &b) {
+        // Your code here
+        int starta = 0;
+        int startb = 0;
+        sort(a.begin(),a.end());
+        sort(b.begin(),b.end());
+            while(starta<a.size()&& startb < b.size()){
+
+                if(b[startb]==a[starta]){
+                    starta++;
+                    startb++;
+                }
+                else{
+                starta++;
+                }
+            }
+        if(startb == b.size()){
+            return true;
+        }
+        return false;
+    }
+};
