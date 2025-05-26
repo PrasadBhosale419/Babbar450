@@ -1,0 +1,35 @@
+/*Complete the function below*/
+
+class Solution {
+  public:
+  bool isPallindrome(int a){
+      int res = 0;
+      int b=a;
+      while(b>0){
+        int rem=b%10;
+        res=res*10+rem;
+        b=b/10;
+      }
+      if(res==a){
+          return true;
+      }
+      else{
+          return false;
+      }
+  }
+    bool isPalinArray(vector<int> &arr) {
+        // code here
+        int count=0;
+        for(int i=0;i<arr.size();i++){
+            if(isPallindrome(arr[i]))
+            {
+                count++;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
